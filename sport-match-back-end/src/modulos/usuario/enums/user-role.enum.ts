@@ -1,4 +1,6 @@
 export enum UserRole {
-  GESTOR = 'GESTOR',
-  COLABORADOR = 'COLABORADOR',
+  ORGANIZADOR = 'organizador',
+  ATLETA = 'atleta',
+  LOCADOR = 'locador',
+  PATROCINADOR = 'patrocinador',
 }
