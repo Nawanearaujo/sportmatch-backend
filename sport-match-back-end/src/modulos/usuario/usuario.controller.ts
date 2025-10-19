@@ -1,9 +1,19 @@
-import { Controller, Post, Body, HttpCode, HttpStatus, Param, Put } from '@nestjs/common';
+import { Controller, Post, Body, HttpCode, HttpStatus, Param, Put, Get} from '@nestjs/common';
 import { UsuarioService } from './usuario.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { LoginUserDto } from './dto/login-user.dto';
+import { EnderecoService } from './endereco.service';
 
 @Controller('usuario') 
+@Controller('address')
+export class AddressController {
+  constructor(private readonly addressService: EnderecoService) {}
+
+  @Get(':cep')
+  async findByCep(@Param('cep') cep: string) {
+    return await this.addressService.findByCep(cep);
+  }
+}
 export class UsuarioController {
   constructor(private readonly usuarioService: UsuarioService) {}
 

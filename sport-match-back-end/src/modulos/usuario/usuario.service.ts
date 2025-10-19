@@ -110,7 +110,7 @@ export class UsuarioService {
     }
 
     async realizarLogin(loginUserDto: LoginUserDto): Promise<Omit<User, 'senha'>> {
-        const { email, matricula, senha } = loginUserDto;
+        const { email, senha } = loginUserDto;
 
         const MOCKED_USERS = [
             {
@@ -149,9 +149,7 @@ export class UsuarioService {
 
         if (email) {
             foundUser = MOCKED_USERS.find(user => user.email === email);
-        } else if (matricula) {
-            foundUser = MOCKED_USERS.find(user => user.matricula === matricula);
-        }
+        } 
 
         if (!foundUser) {
             throw new NotFoundException('Usuário não encontrado.');

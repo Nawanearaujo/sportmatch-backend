@@ -1,9 +1,11 @@
 import { Module } from '@nestjs/common';
 import { UsuarioModule } from './modulos/usuario/usuario.module';
+import { AddressModule } from './endereco/endereco.modulo';
 import { MailerModule } from '@nestjs-modules/mailer';
 
 @Module({
   imports: [
+    AddressModule,
     UsuarioModule,
     MailerModule.forRoot({
       transport: {

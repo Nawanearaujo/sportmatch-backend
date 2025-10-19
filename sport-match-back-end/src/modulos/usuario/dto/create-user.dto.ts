@@ -12,39 +12,7 @@ import {
 import { UserRole } from '../enums/user-role.enum';
 
 export class CreateUserDto {
-  @IsNotEmpty({ message: 'O nome é obrigatório.' })
-  @IsString()
-  nome: string;
-
-  @IsOptional()
-  @IsString()
-  razao_social?: string;
-
-  @IsOptional()
-  @Matches(/^\d{11}$/, { message: 'O CPF deve conter 11 dígitos numéricos.' })
-  cpf?: string;
-
-  @IsOptional()
-  @Matches(/^\d{14}$/, { message: 'O CNPJ deve conter 14 dígitos numéricos.' })
-  cnpj?: string;
-
-  @IsOptional()
-  @IsDateString({}, { message: 'A data de nascimento deve estar em formato válido (DD-MM-AAAA).' })
-  data_nascimento?: string;
-
-  @IsOptional()
-  @IsString()
-  genero?: string;
-
-  @IsOptional()
-  @IsString()
-  telefone?: string;
-
-  @IsOptional()
-  @IsString()
-  usuario?: string; // nome usado para identificação dentro do aplicativo, não é utilizado para fazer login
-
-  @IsNotEmpty({ message: 'O e-mail é obrigatório.' })
+ @IsNotEmpty({ message: 'O e-mail é obrigatório.' })
   @IsEmail({}, { message: 'Formato de e-mail inválido.' })
   email: string;
 
@@ -56,14 +24,62 @@ export class CreateUserDto {
     message: 'A senha deve conter pelo menos um número e um caractere especial.',
   })
   senha: string;
+ 
+  @IsNotEmpty({ message: 'O nome é obrigatório.' })
+  @IsString()
+  nome: string;
 
   @IsOptional()
   @IsString()
-  endereco?: string;
+  usuario?: string; // nome usado para identificação dentro do aplicativo, não é utilizado para fazer login
 
   @IsNotEmpty({ message: 'O perfil é obrigatório.' })
   @IsEnum(UserRole, { message: 'O perfil deve ser organizador, atleta, locador ou patrocinador.' })
   perfil: UserRole;
+
+  @IsOptional()
+  @IsString()
+  genero?: string;
+
+  @IsOptional()
+  @Matches(/^\d{11}$/, { message: 'O CPF deve conter 11 dígitos numéricos.' })
+  cpf?: string;
+
+  @IsOptional()
+  @IsString()
+  telefone?: string;
+
+  @IsOptional()
+  @IsDateString({}, { message: 'A data de nascimento deve estar em formato válido (DD-MM-AAAA).' })
+  data_nascimento?: string;
+
+  @IsNotEmpty({ message: 'O CEP é obrigatório.' })
+  @Matches(/^\d{8}$/, { message: 'O CEP deve conter 8 dígitos numéricos.' })
+  cep: string;
+
+  @IsOptional()
+  @IsString()
+  logradouro?: string;
+
+  @IsOptional()
+  @IsString()
+  bairro?: string;
+
+  @IsOptional()
+  @IsString()
+  cidade?: string;
+
+  @IsOptional()
+  @IsString()
+  estado?: string;
+
+  @IsNotEmpty({ message: 'O número é obrigatório.' })
+  @IsString()
+  numero: string;
+
+  @IsOptional()
+  @IsString()
+  complemento?: string;
 
   @IsOptional()
   @IsString({ each: true })
